@@ -1,0 +1,17 @@
+{% extends 'forum/base.html' %}
+{% block content %}
+
+{% if register_success %}
+
+<p>You have been succesfully registered. You may now <a href='/login'>log in</a>.</p>
+{% else %}
+<form action='.' method='POST'>
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type='submit'>Sign up</button>
+</form>
+{% endif %}
+
+{% endblock %}

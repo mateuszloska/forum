@@ -1,0 +1,20 @@
+{% extends 'forum/base.html' %}
+{% block content %}
+    <h2>Please login</h2>
+    <form action='.' method="POST">
+        {% csrf_token %}
+        <label>Username: </label>
+        <br/>
+        <input type="text" name="username">
+        <br/>
+        <label>Password</label>
+        <br/>
+        <input type="password" name="password">
+        <br/>
+        <button type="submit">Login</button>
+    </form>
+
+    {% if login_failed %}
+        <p style="color:brown">Failed to log in - check the data</p>
+    {% endif %}
+{% endblock content %}
