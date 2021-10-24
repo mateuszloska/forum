@@ -1,0 +1,20 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+
+<table>
+    <thead>
+        <th>Username</th>
+        <th>Group</th>
+        <th>Edit</th>
+    </thead>
+{% for u in users %}
+    <tr>
+        <td>{{u.username}}</td>
+        <td style="color: {{u.profile.group.color}}">{{u.profile.group}}</td>
+        <td>p</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock content %}

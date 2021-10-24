@@ -1,0 +1,14 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+
+<p>Are you sure to remove the group {{group}} ?</p>
+
+<a href="{% url 'forum:manage_groups' %}">Return</a>
+<br/>
+<form method = "POST">
+    {% csrf_token %}
+    <button type="submit">Confirm</button>
+</form>
+
+{% endblock content %}

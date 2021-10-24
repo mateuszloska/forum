@@ -1,0 +1,42 @@
+{% extends 'forum/base.html' %}
+
+
+
+{% block content %}
+
+<h2>Manage groups:</h2>
+
+
+<table>
+    <thead>
+        <th>Group</th>
+        <th>Color</th>
+        <th>Spezial sign</th>
+        <td>Edit</td>
+        <td>Remove</td>
+    </thead>
+    {% for group in groups %}
+    <tr style="color: {{group.color}}">
+        <td>{{group.group_name}}</td>
+        <td>{{group.color}}</td>
+        <td>{{group.sign}}</td>
+        <td>
+            <a href="{% url 'forum:update_group' group.slug %}" type="button">edit</a>
+        </td>
+        <td>
+            <a href="{% url 'forum:remove_group' group.slug %}" type="button">remove</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Add new group</h3>
+
+<form action="." method="POST">
+{% csrf_token %}
+
+{{ form.as_p }}
+<button type="submit">Add group</button>
+
+</form>
+{% endblock content %}

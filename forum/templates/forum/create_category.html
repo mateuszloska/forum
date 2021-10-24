@@ -1,0 +1,10 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+    <h3>Create new category</h3>
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit'>Create new category</button>
+    </form>
+{% endblock %}

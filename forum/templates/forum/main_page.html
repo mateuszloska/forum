@@ -2,12 +2,6 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-<a href='/logout'>Logout ({{ user.username }})</a>
-{% else %}
-<a href='/login'>Login</a>
-{% endif %}
-
 <hr/>
 <h3>Hello,
     {% if user.is_authenticated %}
@@ -15,5 +9,23 @@
     {% endif %}
     welcome on the forum</h3>
 
+{% if 'CREATE_BRANCH' in permissions %}
+<a href="{% url 'forum:create_branch' %}" class="btn btn-dark">Create new branch </a>
+{% endif %}
+
+{% for branch in branches %}
+<div class="branch">
+<h3>{{ branch.name }}</h3>
+    {% if 'CREATE_CATEGORY' in permissions %}
+    <a href="{% url 'forum:create_category' %}" class="btn btn-dark">Create new category </a>
+    {% endif %}
+
+    {% for cat in branch.categories.all %}
+    <div class="category">
+        <p> {{cat.name}} </p>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
 
 {% endblock content %}

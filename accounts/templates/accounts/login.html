@@ -1,5 +1,10 @@
 {% extends 'forum/base.html' %}
+
 {% block content %}
+
+{% if user.is_authenticated %}
+    <h2>You are already logged in</h2>
+{% else %}
     <h2>Please login</h2>
     <form action='.' method="POST">
         {% csrf_token %}
@@ -17,4 +22,6 @@
     {% if login_failed %}
         <p style="color:brown">Failed to log in - check the data</p>
     {% endif %}
+
+{% endif %}
 {% endblock content %}
