@@ -24,6 +24,7 @@
         {% endif %}
 
         {% if user.is_authenticated %}
+        <a href = "{% url 'forum:edit_profile' %}">Edit profile</a>
         <a href = "{% url 'accounts:password_change' %}">Password change</a>
         <a href = "{% url 'accounts:logout_view' %}">Log out</a>
         {% else %}

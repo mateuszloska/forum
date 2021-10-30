@@ -1,11 +1,11 @@
 {% extends 'forum/base.html' %}
 
 {% block content %}
-    <h3>Create new category</h3>
+    <h3>Create new thread</h3>
     <form method='POST'>
         {% csrf_token %}
         {{ form.name }}
-        {{ form.branch.as_hidden }}
+        {{ form.category.as_hidden }}
         <br/>
         <button type='submit' class='btn'>Submit</button>
     </form>

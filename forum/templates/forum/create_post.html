@@ -1,0 +1,13 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+    <h3>Create new post</h3>
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form.thread.as_hidden }}
+        {{ form.author.as_hidden }}
+        {{ form.content }}
+        <br/>
+        <button class='btn' type='submit'>Submit</button>
+    </form>
+{% endblock %}

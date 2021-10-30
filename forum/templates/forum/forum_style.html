@@ -1,10 +1,23 @@
 {% extends 'forum/base.html' %}
 
 {% block content %}
+
 <h2>Edit forum style</h2>
+{% if saved %}
+<p>The changes have been succesfully saved</p>
 <form method='POST'>
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Save settings</button>
 </form>
+
+{% else %}
+
+<form method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Save settings</button>
+</form>
+{% endif %}
+
 {% endblock content %}

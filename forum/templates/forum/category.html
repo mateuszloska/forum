@@ -1,0 +1,21 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+
+<div class="category">
+    <h3>{{category.name}}</h3>
+</div>
+
+<a type="btn" href="{% url 'forum:create_thread' branch_slug=category.branch.slug category_slug=category.slug %}">New thread</a>
+
+<h2>Threads:</h2>
+{% for t in threads %}
+    <p>
+        <a type="btn" href="{% url 'forum:thread' branch_slug=category.branch.slug category_slug=category.slug thread_slug=t.slug %}">{{t.name}}</a>
+        <small>(posts: {{t.get_total_posts}}), 
+            last message: {{t.last_message}}
+        </small>
+    </p>
+{% endfor %}
+
+{% endblock content %}

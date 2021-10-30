@@ -13,16 +13,20 @@
 <a href="{% url 'forum:create_branch' %}" class="btn btn-dark">Create new branch </a>
 {% endif %}
 
-{% for branch in branches %}
+{% for br in branches %}
 <div class="branch">
-<h3>{{ branch.name }}</h3>
+<h3>{{ br.name }}</h3>
     {% if 'CREATE_CATEGORY' in permissions %}
-    <a href="{% url 'forum:create_category' %}" class="btn btn-dark">Create new category </a>
+    <br/>
+    <a href="{% url 'forum:create_category' branch_slug=br.slug %}" class="btn btn-dark">Create new category </a>
     {% endif %}
 
-    {% for cat in branch.categories.all %}
+    {% for cat in br.categories.all %}
     <div class="category">
-        <p> {{cat.name}} </p>
+        <p>
+        <a href="{% url 'forum:category' branch_slug=br.slug category_slug=cat.slug %}">{{cat.name}}</a>
+        <small>(threads: {{ cat.get_total_threads }} posts: {{ cat.get_total_posts }})  </small>
+        </p>
     </div>
     {% endfor %}
 </div>

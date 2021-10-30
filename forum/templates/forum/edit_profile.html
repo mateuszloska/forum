@@ -1,0 +1,13 @@
+{% extends 'forum/base.html' %}
+{% block content %}
+
+<h3>Edit profile</h3>
+
+<img src="{{ MEDIA_URL }}{{user.profile.profile_picture}}" width="150" height="150" />
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn">Save changes</button>
+</form>
+
+{% endblock content %}
